@@ -48,21 +48,35 @@
 
 <script>
     function startSearch() {
-        const subjects = ["Physics", "Chemistry", "Maths"];
+        const questions = [
+            "What is Coulomb's law",
+            "What is the formula of electric field",
+            "What are aliphatic groups",
+            "How to convert Celsius to Fahrenheit",
+            "What is photoelectric effect",
+            "An electron and alpha particle have the same de-Broglie wavelength associated with them. How are their kinetic energies related to each other?",
+            "State the reason, why heavy water is generally used as a moderator in a nuclear reactor",
+            "Name the absorbing material used to control the reaction rate of neutrons in a nuclear reactor",
+            "Two nuclei have mass numbers in the ratio 1:2. What is the ratio of their nuclear densities?",
+            "Two nuclei have mass numbers in the ratio 2:5. What is the ratio of their nuclear densities?"
+        ];
         let index = 0;
-        
+
         function openSearch() {
-            const query = "Class 12 questions on " + subjects[index];
+            if (index >= questions.length) {
+                return; // Stop if all questions have been searched
+            }
+            const query = questions[index];
             const url = "https://www.bing.com/search?q=" + encodeURIComponent(query);
             const newWindow = window.open(url, '_blank');
-            
+
             setTimeout(() => {
                 newWindow.close();
-                index = (index + 1) % subjects.length;
+                index++;
                 openSearch();
             }, 4000);
         }
-        
+
         openSearch();
     }
 </script>
